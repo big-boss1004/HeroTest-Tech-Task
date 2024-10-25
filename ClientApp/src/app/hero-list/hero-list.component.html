@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Hero list</h1>
+
+<p *ngIf="!heroes"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="heroes">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Alias</th>
+      <th>Brand</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hero of heroes">
+      <td>{{ hero.Name }}</td>
+      <td>{{ hero.Alias }}</td>
+      <td>{{ hero.BrandName }}</td>
+      <td>
+        <button (click)="softDeleteHero(hero)" type="button" class="btn btn-danger">Deactivate</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

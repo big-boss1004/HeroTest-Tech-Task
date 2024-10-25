@@ -1,0 +1,31 @@
+<form action="" class="add-hero-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>Add hero</h1>
+
+  <div class="mb-3">
+    <label for="heroName" class="form-label">Name</label>
+    <input formControlName="name" type="text" class="form-control" id="heroName" placeholder="Hero name" required>
+    <div class="text-danger" *ngIf="getErrorMessage('name')">{{ getErrorMessage('name') }}</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="heroAlias" class="form-label">Alias</label>
+    <input formControlName="alias" type="text" class="form-control" id="heroAlias" placeholder="Hero alias" required>
+    <div class="text-danger" *ngIf="getErrorMessage('alias')">{{ getErrorMessage('alias') }}</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="heroBrand" class="form-label">Brand</label>
+    <select class="form-control" id="heroBrand" required>
+      <option value="" disabled selected>Select a brand</option>
+      <option *ngFor="let brand of brands" [value]="brand.Id">{{ brand.Name }}</option>
+    </select>
+    <!-- <input formControlName="brand" type="text" class="form-control" id="heroBrand" placeholder="Hero brand" required>
+    <div class="text-danger" *ngIf="getErrorMessage('brand')">{{ getErrorMessage('brand') }}</div> -->
+  </div>
+
+  <div class="text-success" *ngIf="isSuccess">
+    <span>Hero was successfully added</span>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
